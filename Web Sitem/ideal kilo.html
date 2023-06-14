@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ideal kilo.css">
+</head>
+<body>
+    <div class="container">
+    <div class="navbar">
+      <div class="butonlar">
+      <button><a href="Kayit ol.html">Kayit Ol</a></button>
+        <button><a href="Giriş Yapin.html">Giriş Yap</a></button>
+      </div>
+    <div class="logo">
+    <h1>HESAPLAMALAR</h1>
+    </div>
+    
+        <ul>
+        <li><a href="index.html" >Ana Sayfa</a></li>
+        <li><a href="ideal kilo.html"class="active">İdeal Kilo</a></li>
+        <li><a href="Sıcaklık değişimi.html">Sıcaklık Dönüştürücü</a></li> 
+        <li><a href="hesaplamalar.html"> Boy Kilo Endeksi</a></li> 
+        <li><a href="İletişim.html"> İletişim</a></li>
+    </ul>
+    </div>
+    <div class="hesaplama">
+    <h2>Ideal Kilo Hesaplama</h2>
+    <input type="number" id="boy" placeholder="Boy (cm)">
+    <br>
+    <input type="button" value="Hesapla" onclick="calculateIdealWeight()">
+    <br>
+    <p id="sonuc"></p>
+</div>
+    <script>
+        function calculateIdealWeight() {
+            var boy = parseFloat(document.getElementById('boy').value);
+
+            if (isNaN(boy)) {
+                document.getElementById('sonuc').innerHTML = "Geçersiz değer!";
+                return;
+            }
+
+            var idealKilo = 0;
+            
+            if (boy >= 150) {
+                idealKilo = (boy - 100) * 0.9;
+            } else {
+                idealKilo = (boy - 100) * 0.85;
+            }
+
+            document.getElementById('sonuc').innerHTML = "Ideal Kilo: " + idealKilo.toFixed(2) + " kg";
+        }
+    </script>
+</div>
+</body>
+</html>

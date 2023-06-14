@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="hesaplamalar.css">
+</head>
+<body>
+    <div class="container">
+    <div class="navbar">
+      <div class="butonlar">
+      <button><a href="Kayit ol.html">Kayit Ol</a></button>
+        <button><a href="Giriş Yapin.html">Giriş Yap</a></button>
+      </div>
+    <div class="logo">
+    <h1>HESAPLAMALAR</h1>
+    </div>
+        <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="ideal kilo.html">İdeal Kilo</a></li>
+        <li><a href="Sıcaklık değişimi.html">Sıcaklık Dönüştürücü</a></li> 
+        <li><a href="hesaplamalar.html"class="active"> Boy Kilo Endeksi</a></li> 
+        <li><a href="İletişim.html"> İletişim</a></li>
+    </ul>
+    </div>
+    <div class="hesaplama">
+        <h2>Boy Kilo Endeksi Hesaplama</h2>
+        <input type="number" id="boy" placeholder="Boy (cm)">
+        <br>
+        <input type="number" id="kilo" placeholder="Kilo (kg)">
+        <br>
+        <input type="button" value="Hesapla" onclick="calculateBMI()">
+        <br>
+        <p id="sonuç"></p>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            var boy = parseFloat(document.getElementById('boy').value);
+            var kilo = parseFloat(document.getElementById('kilo').value);
+
+            if (isNaN(boy) || isNaN(kilo)) {
+                document.getElementById('sonuç').innerHTML = "Geçersiz değerler!";
+                return;
+            }
+
+            var boy_kilo = kilo / Math.pow(boy / 100, 2);
+            boy_kilo = boy_kilo.toFixed(2);
+
+            var endeks = "Vücut Kitle İndeksi: " + boy_kilo + "<br>";
+
+            if (boy_kilo < 18.5) {
+                endeks += "Zayıf";
+            } else if (boy_kilo >= 18.5 && boy_kilo < 25) {
+                endeks += "Normal";
+            } else if (boy_kilo >= 25 && boy_kilo < 30) {
+                endeks += "Fazla Kilolu";
+            } else {
+                endeks += "Obez";
+            }
+
+            document.getElementById('sonuç').innerHTML = endeks;
+        }
+    </script>
+    
+</body>
+</html>
